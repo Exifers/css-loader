@@ -89,7 +89,14 @@
     },
     "localsConvention": {
       "description": "Style of exported classnames (https://github.com/webpack-contrib/css-loader#localsconvention).",
-      "enum": ["asIs", "camelCase", "camelCaseOnly", "dashes", "dashesOnly"]
+      "anyOf": [
+        {
+          "enum": ["asIs", "camelCase", "camelCaseOnly", "dashes", "dashesOnly"]
+        },
+        {
+          "instanceof": "Function"
+        }
+      ]
     },
     "onlyLocals": {
       "description": "Export only locals (https://github.com/webpack-contrib/css-loader#onlylocals).",

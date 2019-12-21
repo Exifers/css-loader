@@ -287,3 +287,50 @@ a {
 `;
 
 exports[`"localsConvention" option should work with a value equal to "dashesOnly": warnings 1`] = `Array []`;
+
+exports[`"localsConvention" option should work with a value equal to a custom function: errors 1`] = `Array []`;
+
+exports[`"localsConvention" option should work with a value equal to a custom function: module 1`] = `
+"// Imports
+var ___CSS_LOADER_API_IMPORT___ = require(\\"../../../../src/runtime/api.js\\");
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.id, \\".erBXHZCN_thRYfCnk-aH8 {\\\\n  color: blue;\\\\n}\\\\n\\\\n._2YsQE-S0o0NRXfC6XNApz2 {\\\\n  color: blue;\\\\n}\\\\n\\\\n._3gGBcJHZU3seQVP5aq7Ksq {\\\\n  color: red;\\\\n}\\\\n\\\\na {\\\\n  color: yellow;\\\\n}\\\\n\\", \\"\\"]);
+// Exports
+exports.locals = {
+	\\"FOO\\": \\"bar\\",
+	\\"MY-BTN-INFO_IS-DISABLED\\": \\"value\\",
+	\\"BTN-INFO_IS-DISABLED\\": \\"erBXHZCN_thRYfCnk-aH8\\",
+	\\"BTN--INFO_IS-DISABLED_1\\": \\"_2YsQE-S0o0NRXfC6XNApz2\\",
+	\\"SIMPLE\\": \\"_3gGBcJHZU3seQVP5aq7Ksq\\"
+};
+module.exports = exports;
+"
+`;
+
+exports[`"localsConvention" option should work with a value equal to a custom function: result 1`] = `
+Array [
+  Array [
+    "./modules/localsConvention/localsConvention.css",
+    ".erBXHZCN_thRYfCnk-aH8 {
+  color: blue;
+}
+
+._2YsQE-S0o0NRXfC6XNApz2 {
+  color: blue;
+}
+
+._3gGBcJHZU3seQVP5aq7Ksq {
+  color: red;
+}
+
+a {
+  color: yellow;
+}
+",
+    "",
+  ],
+]
+`;
+
+exports[`"localsConvention" option should work with a value equal to a custom function: warnings 1`] = `Array []`;

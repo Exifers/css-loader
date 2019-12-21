@@ -783,7 +783,7 @@ This may change in the future when the module system (i. e. webpack) supports lo
 
 ### `localsConvention`
 
-Type: `String`
+Type: `String` | `Function`
 Default: `'asIs'`
 
 Style of exported classnames.
@@ -797,6 +797,8 @@ By default, the exported JSON keys mirror the class names (i.e `asIs` value).
 | **`'camelCaseOnly'`** | `{String}` | Class names will be camelized, the original class name will be removed from the locals           |
 |    **`'dashes'`**     | `{String}` | Only dashes in class names will be camelized                                                     |
 |  **`'dashesOnly'`**   | `{String}` | Dashes in class names will be camelized, the original class name will be removed from the locals |
+
+If you want more control over exported classnames, you can also provide a function.
 
 **file.css**
 
@@ -821,7 +823,7 @@ module.exports = {
         test: /\.css$/i,
         loader: 'css-loader',
         options: {
-          localsConvention: 'camelCase',
+          localsConvention: (classname) => classname.toLowerCase(),
         },
       },
     ],

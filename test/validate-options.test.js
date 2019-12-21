@@ -48,7 +48,7 @@ describe('validate options', () => {
       failure: ['true'],
     },
     localsConvention: {
-      success: ['camelCase', 'camelCaseOnly', 'dashes', 'dashesOnly'],
+      success: ['camelCase', 'camelCaseOnly', 'dashes', 'dashesOnly', () => {}],
       failure: ['unknown'],
     },
     importLoaders: {

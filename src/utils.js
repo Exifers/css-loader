@@ -425,39 +425,47 @@ function getExportCode(
     exports.forEach((item) => {
       const { name, value } = item;
 
-      switch (localsConvention) {
-        case 'camelCase': {
-          addExportedLocal(name, value);
+      if (typeof localsConvention === 'function') {
+        const modifiedName = localsConvention(name);
 
-          const modifiedName = camelCase(name);
+        if (modifiedName !== name) {
+          addExportedLocal(modifiedName, value);
+        }
+      } else {
+        switch (localsConvention) {
+          case 'camelCase': {
+            addExportedLocal(name, value);
 
-          if (modifiedName !== name) {
-            addExportedLocal(modifiedName, value);
+            const modifiedName = camelCase(name);
+
+            if (modifiedName !== name) {
+              addExportedLocal(modifiedName, value);
+            }
+            break;
           }
-          break;
-        }
-        case 'camelCaseOnly': {
-          addExportedLocal(camelCase(name), value);
-          break;
-        }
-        case 'dashes': {
-          addExportedLocal(name, value);
-
-          const modifiedName = dashesCamelCase(name);
-
-          if (modifiedName !== name) {
-            addExportedLocal(modifiedName, value);
+          case 'camelCaseOnly': {
+            addExportedLocal(camelCase(name), value);
+            break;
           }
-          break;
+          case 'dashes': {
+            addExportedLocal(name, value);
+
+            const modifiedName = dashesCamelCase(name);
+
+            if (modifiedName !== name) {
+              addExportedLocal(modifiedName, value);
+            }
+            break;
+          }
+          case 'dashesOnly': {
+            addExportedLocal(dashesCamelCase(name), value);
+            break;
+          }
+          case 'asIs':
+          default:
+            addExportedLocal(name, value);
+            break;
         }
-        case 'dashesOnly': {
-          addExportedLocal(dashesCamelCase(name), value);
-          break;
-        }
-        case 'asIs':
-        default:
-          addExportedLocal(name, value);
-          break;
       }
     });
 

@@ -126,4 +126,24 @@ describe('"localsConvention" option', () => {
     expect(getWarnings(stats)).toMatchSnapshot('warnings');
     expect(getErrors(stats)).toMatchSnapshot('errors');
   });
+
+  it('should work with a value equal to a custom function', async () => {
+    const compiler = getCompiler(
+      './modules/localsConvention/localsConvention.js',
+      {
+        modules: true,
+        localsConvention: (className) => className.toUpperCase(),
+      }
+    );
+    const stats = await compile(compiler);
+
+    expect(
+      getModuleSource('./modules/localsConvention/localsConvention.css', stats)
+    ).toMatchSnapshot('module');
+    expect(getExecutedCode('main.bundle.js', compiler, stats)).toMatchSnapshot(
+      'result'
+    );
+    expect(getWarnings(stats)).toMatchSnapshot('warnings');
+    expect(getErrors(stats)).toMatchSnapshot('errors');
+  });
 });

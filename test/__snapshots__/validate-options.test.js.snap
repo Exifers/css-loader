@@ -29,8 +29,12 @@ exports[`validate options should throw an error on the "importLoaders" option wi
 exports[`validate options should throw an error on the "localsConvention" option with "unknown" value 1`] = `
 "Invalid options object. CSS Loader has been initialised using an options object that does not match the API schema.
  - options.localsConvention should be one of these:
-   \\"asIs\\" | \\"camelCase\\" | \\"camelCaseOnly\\" | \\"dashes\\" | \\"dashesOnly\\"
-   -> Style of exported classnames (https://github.com/webpack-contrib/css-loader#localsconvention)."
+   \\"asIs\\" | \\"camelCase\\" | \\"camelCaseOnly\\" | \\"dashes\\" | \\"dashesOnly\\" | function
+   -> Style of exported classnames (https://github.com/webpack-contrib/css-loader#localsconvention).
+   Details:
+    * options.localsConvention should be one of these:
+      \\"asIs\\" | \\"camelCase\\" | \\"camelCaseOnly\\" | \\"dashes\\" | \\"dashesOnly\\"
+    * options.localsConvention should be an instance of function."
 `;
 
 exports[`validate options should throw an error on the "modules" option with "{"context":true}" value 1`] = `
