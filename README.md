@@ -790,15 +790,14 @@ Style of exported classnames.
 
 By default, the exported JSON keys mirror the class names (i.e `asIs` value).
 
-|         Name          |    Type    | Description                                                                                      |
-| :-------------------: | :--------: | :----------------------------------------------------------------------------------------------- |
-|     **`'asIs'`**      | `{String}` | Class names will be exported as is.                                                              |
-|   **`'camelCase'`**   | `{String}` | Class names will be camelized, the original class name will not to be removed from the locals    |
-| **`'camelCaseOnly'`** | `{String}` | Class names will be camelized, the original class name will be removed from the locals           |
-|    **`'dashes'`**     | `{String}` | Only dashes in class names will be camelized                                                     |
-|  **`'dashesOnly'`**   | `{String}` | Dashes in class names will be camelized, the original class name will be removed from the locals |
-
-If you want more control over exported classnames, you can also provide a function.
+|         Name          |     Type     | Description                                                                                      |
+| :-------------------: | :----------: | :----------------------------------------------------------------------------------------------- |
+|     **`'asIs'`**      |  `{String}`  | Class names will be exported as is.                                                              |
+|   **`'camelCase'`**   |  `{String}`  | Class names will be camelized, the original class name will not to be removed from the locals    |
+| **`'camelCaseOnly'`** |  `{String}`  | Class names will be camelized, the original class name will be removed from the locals           |
+|    **`'dashes'`**     |  `{String}`  | Only dashes in class names will be camelized                                                     |
+|  **`'dashesOnly'`**   |  `{String}`  | Dashes in class names will be camelized, the original class name will be removed from the locals |
+|                       | `{Function}` | Takes the original class name as first argument and returns the exported class name              |
 
 **file.css**
 
@@ -823,7 +822,7 @@ module.exports = {
         test: /\.css$/i,
         loader: 'css-loader',
         options: {
-          localsConvention: (classname) => classname.toLowerCase(),
+          localsConvention: 'camelCase',
         },
       },
     ],
