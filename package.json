@@ -1,7 +1,7 @@
 {
-  "name": "css-loader",
+  "name": "css-loader-functional-locals-convention",
   "version": "3.4.0",
-  "description": "css loader module for webpack",
+  "description": "A fork of css loader with an additional option for locals convention",
   "license": "MIT",
   "repository": "webpack-contrib/css-loader",
   "author": "Tobias Koppers @sokra",
